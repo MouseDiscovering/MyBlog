@@ -1,0 +1,85 @@
+<h1 id="proofk-means-clustering-algorithm-is-a-special-kind-of-gaussian-mixed-model-based-on-em-algorithm">Proof:K-means clustering algorithm is a special kind of Gaussian Mixed Model based on EM algorithm</h1>
+
+
+
+<h2 id="1k-means-algorithm-analysis">1.K-means algorithm analysis</h2>
+
+<p>​   Considering the K-means clustering algorithm: <br>
+<script id="MathJax-Element-1" type="math/tex; mode=display">
+(\mu_{1},...\mu_{k})^{*} =\mathop{ \text{argmin}}_{u_1,...,u_{k}}  \mathop{\text{min}}_{z_1,...z_{k}} \sum_{i =1}^{n} (\mathbf{x}_{i,k} - \mathbf{u}_{k})(\mathbf{x}_{i,k} - \mathbf{u}_{k})^T
+</script> <br>
+​   The steps are as below:</p>
+
+<ol>
+<li><p>Initialize <script id="MathJax-Element-2" type="math/tex">\mathbf{\mu}_{1}, ... , \mathbf{\mu}_{k}</script> to be equal to randomly selected points <script id="MathJax-Element-3" type="math/tex">x_1, ... , x_{k}</script>.</p></li>
+<li><p>Repeat the steps below until <script id="MathJax-Element-4" type="math/tex">z_1,...,z_{n}</script> stop changing.</p>
+
+<ol><li><p><script id="MathJax-Element-5" type="math/tex">z_{i} := \text{argmin}_{z} (\mathbf{x}_{i} - \mathbf{u}_{z})(\mathbf{x}_{i} - \mathbf{u}_{z})^T</script> </p></li>
+<li><p><script id="MathJax-Element-6" type="math/tex">\mu_{z} := \frac{1}{N_{z}} \sum_{i:z_{i} = z}x_{i}, \quad N_{z} \text{ is the number of data belonging to } z_{i}</script></p>
+
+<p>​</p></li></ol></li>
+</ol>
+
+
+
+<h2 id="2a-guassian-distribution-whose-dimensions-are-independent-to-each-other">2.A Guassian distribution whose dimensions are independent to each other</h2>
+
+<p>​   In a Gaussian mixed model, EM algorithm solves the following optimization problem: <br>
+<script id="MathJax-Element-7" type="math/tex; mode=display">
+\theta^{*} = \mathop{\text{argmax}} _{\theta}  \max_{z_1,...,z_n} P_{\theta}(x_1,...,x_n,z_1,...z_n)
+</script> <br>
+​   <script id="MathJax-Element-8" type="math/tex">\theta</script> is the parameters of the Gaussian distritions, and <script id="MathJax-Element-9" type="math/tex">z</script> denotes the label that the data belong to, which is called latent variable.</p>
+
+<p>​   If each dimension of a Gaussian distribution is independent. For a such Gaussian distribution which has <strong>d dimensions</strong>, the covariance matrix has the form below. <br>
+<script id="MathJax-Element-10" type="math/tex; mode=display">
+\begin{equation}
+\Sigma = \left [
+ 	\begin{matrix}
+ 	1_1 &\cdots & 0  \\
+ 	\vdots &\ddots &\vdots \\
+ 	0 &\cdots & 1_{d}
+ 	\end{matrix}
+\right]
+\end{equation}
+</script></p>
+
+<p>​   The log likelihood function is: <br>
+<script id="MathJax-Element-11" type="math/tex; mode=display">
+\begin{equation}
+	\begin{aligned}
+	L(\theta|X) 
+	&= log\prod_{i = 1}^{n}(\frac{1}{2\pi \sigma_{k}^{2}} exp(-\frac{(\mathbf{x}_{i,k} - \mathbf{u}_{k})(\mathbf{x}_{i,k} - \mathbf{u}_{k})^T} {2 \sigma_{k}^2} ))\\
+	&=- \sum_{i=1}^{n}\left( 
+		log(2\pi \sigma_k)  + \frac{(\mathbf{x}_{i,k} - \mathbf{u}_{k})(\mathbf{x}_{i,k} - \mathbf{u}_{k})^T} {2 \sigma_{k}^2}
+		\right)	\\
+        &= - n \cdot log(2\pi) - \sum_{i=1}^{n}\frac{1}{2}(\mathbf{x}_{i,k} - \mathbf{u}_{k})(\mathbf{x}_{i,k} - \mathbf{u}_{k})^T
+	\end{aligned}
+\end{equation}
+</script> <br>
+​   The maximization of  <script id="MathJax-Element-12" type="math/tex">L(\theta | X)</script> is equivalent to the minimization of <script id="MathJax-Element-13" type="math/tex">-L(\theta | X)</script> . <script id="MathJax-Element-14" type="math/tex">n \cdot log(2\pi)</script> is a constant so that it can be omitted. The problem is equivalent to as below. <br>
+<script id="MathJax-Element-15" type="math/tex; mode=display">
+\begin{aligned}
+\theta^{*} &= \mathop{\text{argmin}}L^{'}(\theta | X )  \\
+&=\mathop{\text{argmin}} \sum_{i=1}^{n}  \frac{(\mathbf{x}_{i,k} - \mathbf{u}_{k})(\mathbf{x}_{i,k} - \mathbf{u}_{k})^T} {2 }
+\end{aligned}
+</script> <br>
+​   <script id="MathJax-Element-16" type="math/tex">\theta</script> here only consists of <script id="MathJax-Element-17" type="math/tex">\mu_{1},...\mu_{k}</script> , for all variances are fixed to 1.</p>
+
+
+
+<h2 id="3conclusion">3.Conclusion</h2>
+
+<p>​   So it is proven that K-means clustering algorithm is a special Gaussian mixed model based on EM algorithm. The special mixed Gaussian distributions should have the <strong><em>identity</em></strong> covariance matrix so that the clustering problems can be equivalent.</p>
+
+<hr>
+
+<ul>
+<li>Author: Donghao</li>
+<li>St NO.: 031220415(SX1603137 for post graduate) </li>
+<li>Data: 2016.9.14</li>
+<li>E-mail: dongyinhao@foxmail.com</li>
+</ul>
+
+<blockquote>
+  <p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
+</blockquote>
