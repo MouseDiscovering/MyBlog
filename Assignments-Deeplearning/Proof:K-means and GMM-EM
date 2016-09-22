@@ -5,17 +5,17 @@
 <h2 id="1k-means-algorithm-analysis">1.K-means algorithm analysis</h2>
 
 <p>​   Considering the K-means clustering algorithm: <br>
-<script id="MathJax-Element-1" type="math/tex; mode=display">
+<script id="MathJax-Element-18" type="math/tex; mode=display">
 (\mu_{1},...\mu_{k})^{*} =\mathop{ \text{argmin}}_{u_1,...,u_{k}}  \mathop{\text{min}}_{z_1,...z_{k}} \sum_{i =1}^{n} (\mathbf{x}_{i,k} - \mathbf{u}_{k})(\mathbf{x}_{i,k} - \mathbf{u}_{k})^T
 </script> <br>
 ​   The steps are as below:</p>
 
 <ol>
-<li><p>Initialize <script id="MathJax-Element-2" type="math/tex">\mathbf{\mu}_{1}, ... , \mathbf{\mu}_{k}</script> to be equal to randomly selected points <script id="MathJax-Element-3" type="math/tex">x_1, ... , x_{k}</script>.</p></li>
-<li><p>Repeat the steps below until <script id="MathJax-Element-4" type="math/tex">z_1,...,z_{n}</script> stop changing.</p>
+<li><p>Initialize <script id="MathJax-Element-19" type="math/tex">\mathbf{\mu}_{1}, ... , \mathbf{\mu}_{k}</script> to be equal to randomly selected points <script id="MathJax-Element-20" type="math/tex">x_1, ... , x_{k}</script>.</p></li>
+<li><p>Repeat the steps below until <script id="MathJax-Element-21" type="math/tex">z_1,...,z_{n}</script> stop changing.</p>
 
-<ol><li><p><script id="MathJax-Element-5" type="math/tex">z_{i} := \text{argmin}_{z} (\mathbf{x}_{i} - \mathbf{u}_{z})(\mathbf{x}_{i} - \mathbf{u}_{z})^T</script> </p></li>
-<li><p><script id="MathJax-Element-6" type="math/tex">\mu_{z} := \frac{1}{N_{z}} \sum_{i:z_{i} = z}x_{i}, \quad N_{z} \text{ is the number of data belonging to } z_{i}</script></p>
+<ol><li><p><script id="MathJax-Element-22" type="math/tex">z_{i} := \text{argmin}_{z} (\mathbf{x}_{i} - \mathbf{u}_{z})(\mathbf{x}_{i} - \mathbf{u}_{z})^T</script> </p></li>
+<li><p><script id="MathJax-Element-23" type="math/tex">\mu_{z} := \frac{1}{N_{z}} \sum_{i:z_{i} = z}x_{i}, \quad N_{z} \text{ is the number of data belonging to } z_{i}</script></p>
 
 <p>​</p></li></ol></li>
 </ol>
@@ -25,13 +25,13 @@
 <h2 id="2a-guassian-distribution-whose-dimensions-are-independent-to-each-other">2.A Guassian distribution whose dimensions are independent to each other</h2>
 
 <p>​   In a Gaussian mixed model, EM algorithm solves the following optimization problem: <br>
-<script id="MathJax-Element-7" type="math/tex; mode=display">
+<script id="MathJax-Element-24" type="math/tex; mode=display">
 \theta^{*} = \mathop{\text{argmax}} _{\theta}  \max_{z_1,...,z_n} P_{\theta}(x_1,...,x_n,z_1,...z_n)
 </script> <br>
-​   <script id="MathJax-Element-8" type="math/tex">\theta</script> is the parameters of the Gaussian distritions, and <script id="MathJax-Element-9" type="math/tex">z</script> denotes the label that the data belong to, which is called latent variable.</p>
+​   <script id="MathJax-Element-25" type="math/tex">\theta</script> is the parameters of the Gaussian distritions, and <script id="MathJax-Element-26" type="math/tex">z</script> denotes the label that the data belong to, which is called latent variable.</p>
 
 <p>​   If each dimension of a Gaussian distribution is independent. For a such Gaussian distribution which has <strong>d dimensions</strong>, the covariance matrix has the form below. <br>
-<script id="MathJax-Element-10" type="math/tex; mode=display">
+<script id="MathJax-Element-27" type="math/tex; mode=display">
 \begin{equation}
 \Sigma = \left [
  	\begin{matrix}
@@ -44,7 +44,7 @@
 </script></p>
 
 <p>​   The log likelihood function is: <br>
-<script id="MathJax-Element-11" type="math/tex; mode=display">
+<script id="MathJax-Element-28" type="math/tex; mode=display">
 \begin{equation}
 	\begin{aligned}
 	L(\theta|X) 
@@ -56,14 +56,14 @@
 	\end{aligned}
 \end{equation}
 </script> <br>
-​   The maximization of  <script id="MathJax-Element-12" type="math/tex">L(\theta | X)</script> is equivalent to the minimization of <script id="MathJax-Element-13" type="math/tex">-L(\theta | X)</script> . <script id="MathJax-Element-14" type="math/tex">n \cdot log(2\pi)</script> is a constant so that it can be omitted. The problem is equivalent to as below. <br>
-<script id="MathJax-Element-15" type="math/tex; mode=display">
+​   The maximization of  <script id="MathJax-Element-29" type="math/tex">L(\theta | X)</script> is equivalent to the minimization of <script id="MathJax-Element-30" type="math/tex">-L(\theta | X)</script> . <script id="MathJax-Element-31" type="math/tex">n \cdot log(2\pi)</script> is a constant so that it can be omitted. The problem is equivalent to as below. <br>
+<script id="MathJax-Element-32" type="math/tex; mode=display">
 \begin{aligned}
 \theta^{*} &= \mathop{\text{argmin}}L^{'}(\theta | X )  \\
 &=\mathop{\text{argmin}} \sum_{i=1}^{n}  \frac{(\mathbf{x}_{i,k} - \mathbf{u}_{k})(\mathbf{x}_{i,k} - \mathbf{u}_{k})^T} {2 }
 \end{aligned}
 </script> <br>
-​   <script id="MathJax-Element-16" type="math/tex">\theta</script> here only consists of <script id="MathJax-Element-17" type="math/tex">\mu_{1},...\mu_{k}</script> , for all variances are fixed to 1.</p>
+​   <script id="MathJax-Element-33" type="math/tex">\theta</script> here only consists of <script id="MathJax-Element-34" type="math/tex">\mu_{1},...\mu_{k}</script> , for all variances are fixed to 1.</p>
 
 
 
